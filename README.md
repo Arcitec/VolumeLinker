@@ -33,9 +33,11 @@ may be other use cases for it as well. Have fun!
 
 ## Installation
 
-1. Unzip the application into any folder on your hard disk.
+1. Download the [latest release of Volume Linker](https://github.com/VideoPlayerCode/VolumeLinker/releases).
 
-2. Start `VolumeLinker32.exe` (32-bit) or `VolumeLinker64.exe` (64-bit).
+2. Unzip the application into any folder on your hard disk.
+
+3. Start `VolumeLinker32.exe` (32-bit) or `VolumeLinker64.exe` (64-bit).
    There is no difference between the two applications, but if you have
    a 64-bit version of Windows, you should be using the 64-bit version
    since it's optimized for such processors.
