@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3">
+	<asmv3:application>
+		<asmv3:windowsSettings>
+			<!--
+				Tell old Windows (7, 8, 8.1) to not do virtual scaling (stretching).
+				We really don't give a shit about those old operating systems, and
+				most people using them have old computers with 96 DPI (standard)
+				displays, which means that ANY non-scaled windows still look correct
+				on MOST screens.
+
+				However, the result IS actually GREAT, because of the fact that our
+				application uses dialogs, which are defined in "points" instead of
+				pixels, and are therefore auto-scaled to the active screen's DPI on
+				first opening, regardless of which old OS (tested on Win7 and Win8.1).
+
+				So most users who DO have high-DPI screens on old Windows 7/8 will
+				see a beautifully crisp, correctly scaled, high-DPI interface.
+
+				However, if they move the app between different-DPI screens, they
+				will most likely not get a good result. But that's not worth worrying
+				about since these are such old and awful operating systems.
+
+				NOTE:
+				The reason why we MUST disable scaling for all operating systems is
+				so that screen coordinates for things like popup menus work properly.
+				-->
+			<dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">True/PM</dpiAware>
+			<!--
+				Tell Windows 10 to use the modern V2 scaling algorithm, which was
+				added in 1703 (Creators Update) in April of 2017. Anyone using
+				Windows 10 should have this update by now, and if they don't
+				then they're idiots (why be on a modern OS without updating it?).
+
+				This new algorithm AUTOMATICALLY scales all dialogs (resource
+				designer) windows, and then reacts to live DPI changes such as
+				the user changing DPI or moving the window to a different-DPI
+				screen. It makes the GUI *always* look fantastic on ANY machine!
+
+				The only requirement is that we use the "System Font" setting
+				for our dialogs. Which we do!
+
+				Also note that we do NOT define any V1 (early Win10) fallback here,
+				because that would sadly disable V2 for dialogs, as explained here:
+				https://blogs.windows.com/windowsdeveloper/2017/04/04/high-dpi-scaling-improvements-desktop-applications-windows-10-creators-update/
+				-->
+			<dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2</dpiAwareness>
+		</asmv3:windowsSettings>
+	</asmv3:application>
+</assembly>
